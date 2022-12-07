@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import addGoodToCart from "../redux/actions/action";
+import store from "../redux/reducers/store";
+import { connect } from "react-redux";
 import "../styles.css";
 
 
@@ -19,5 +22,9 @@ class GoodsItem extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({  
+  addGoodToCart: (id) => {
+    dispatch(addGoodToCart(id))}
+});
 
-export default GoodsItem;
+export default connect(null, mapDispatchToProps)(GoodsItem);

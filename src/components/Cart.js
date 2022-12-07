@@ -3,7 +3,7 @@ import "../styles.css";
 
 import CartItem from './CartItem';
 
-class Cart extends Component {
+export default class Cart extends Component {
   state = {
     cartGoods: []
   }
@@ -31,6 +31,14 @@ class Cart extends Component {
       </div>
     );
   }
-}
 
-export default Cart;
+  componentDidMount() {
+    store.subscribe(() => {
+      const state = store.getState();
+      this.setState({ 
+        cartGoods: state.cart 
+      });
+    });
+
+}
+}
